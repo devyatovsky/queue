@@ -5,7 +5,6 @@ import org.springframework.stereotype.Service;
 import yar.dev.queue.exception.IncorrectValueException;
 import yar.dev.queue.service.QueueService;
 
-import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 @Service
@@ -30,10 +29,10 @@ public class QueueServiceImpl implements QueueService {
             return "a0".repeat(currentCode.length() / 2) + "a0";
         }
 
-        char[] charArray = currentCode.toCharArray();
+        var charArray = currentCode.toCharArray();
 
         for (int i = charArray.length - 1; i > 0; i -= 2) {
-            int numeric = Character.getNumericValue(charArray[i]);
+            var numeric = Character.getNumericValue(charArray[i]);
 
             if (charArray[i - 1] == 'z' && numeric == 9) {
                 charArray[i] = '0';

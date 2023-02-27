@@ -19,7 +19,7 @@ public class QueueDataServiceImpl implements QueueDataService {
 
     @Override
     public QueueEntity save(String generatedCode) {
-        QueueEntity queueEntity = new QueueEntity();
+        var queueEntity = new QueueEntity();
         queueEntity.setValue(generatedCode);
         return queueRepository.save(queueEntity);
     }

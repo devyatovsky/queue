@@ -3,7 +3,6 @@ package yar.dev.queue.service.impl;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import yar.dev.queue.dto.QueueDto;
-import yar.dev.queue.entity.QueueEntity;
 import yar.dev.queue.exception.IncorrectValueException;
 import yar.dev.queue.service.ProcessQueueService;
 import yar.dev.queue.service.QueueDataService;
@@ -18,9 +17,9 @@ public class ProcessQueueServiceImpl implements ProcessQueueService {
 
     @Override
     public QueueDto getNextQueueValue() throws IncorrectValueException {
-        String lastCode = queueDataService.getLastCode();
-        String generatedCode = queueService.generateCode(lastCode);
-        QueueEntity savedEntity = queueDataService.save(generatedCode);
+        var lastCode = queueDataService.getLastCode();
+        var generatedCode = queueService.generateCode(lastCode);
+        var savedEntity = queueDataService.save(generatedCode);
         return new QueueDto(savedEntity.getId(), savedEntity.getValue());
     }
 
